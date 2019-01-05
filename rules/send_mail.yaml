@@ -1,0 +1,14 @@
+---
+name: Send_mail
+description: "Rule which sends an email when trigger from Zabbix is received"
+pack: zabbix
+enabled: true
+trigger:
+  type: zabbix.send_mail
+criteria:
+  trigger.alert_subject:
+    pattern: http
+    type: contains
+action:
+  ref: zabbix.send_mail
+

@@ -4,11 +4,14 @@ from st2client.base import BaseCLIApp
 
 
 from optparse import OptionParser
-
+import urllib3
 
 class ZabbixDispatcher(BaseCLIApp):
     def __init__(self, options):
         self.options = options
+
+        #disable ssl warnings
+        urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
         # make a client object to connect st2api
         self.client = self.get_client(args=options)
@@ -96,6 +99,9 @@ def get_options():
 def main():
     # parse and get arguemnts
     (options, args) = get_options()
+    
+    #disable ssl warnings
+    urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
     # make client to dispatch trigger
     dispatcher = ZabbixDispatcher(options)
