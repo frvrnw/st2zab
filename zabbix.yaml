@@ -1,0 +1,5 @@
+---
+zabbix:
+  url: http://54.169.144.231
+  username: Admin
+  password: zabbix
